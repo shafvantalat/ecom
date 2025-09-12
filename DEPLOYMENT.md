@@ -27,7 +27,7 @@ This guide will help you deploy your WhatsApp E-Commerce app to production.
    WHATSAPP_PHONE=your-whatsapp-phone-number
    JWT_SECRET=your-jwt-secret
    NODE_ENV=production
-   FRONTEND_URL=https://your-frontend-url.vercel.app
+   FRONTEND_URL=https://your-frontend-url.vizz
    ```
 5. Deploy
 
@@ -49,7 +49,7 @@ WHATSAPP_PHONE=+1234567890
 JWT_SECRET=your-jwt-secret-here
 PORT=5000
 NODE_ENV=production
-FRONTEND_URL=https://your-frontend-url.vercel.app
+FRONTEND_URL=https://your-frontend-url.vizz
 ```
 
 ### Frontend (.env)

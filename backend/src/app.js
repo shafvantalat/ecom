@@ -11,9 +11,7 @@ const app = express();
 app.use(cors({
   origin: [
     process.env.FRONTEND_URL || 'http://localhost:3000',
-    'https://mellifluous-babka-8199bc.netlify.app',
-    'https://collectionsbyshafvan.netlify.app',
-    'https://yellownigga.netlify.app'
+    'https://collectionsbyshafvan.netlify.app'
   ],
   credentials: true
 }));

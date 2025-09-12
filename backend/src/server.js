@@ -1,8 +1,14 @@
 const app = require('./app');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+// Load environment variables
+dotenv.config();
+
+const URI = process.env.MONGODB_URI;
 
 const PORT = process.env.PORT || 5002;
-const MONGODB_URI = 'mongodb+srv://shafvan2:talat@ecom.houahwt.mongodb.net/?retryWrites=true&w=majority&appName=ecom';
+const MONGODB_URI = URI;
 
 // Connect to database
 const connectDB = async () => {
