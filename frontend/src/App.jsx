@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { ProductProvider } from './context/ProductContext'
 import DatabaseStatus from './components/DatabaseStatus'
 import Navbar from './components/Navbar'
@@ -9,6 +9,12 @@ import ProductList from './pages/ProductList'
 import ProductDetail from './pages/ProductDetail'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
+
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem('adminToken')
+  if (!token) return <Navigate to="/admin/login" replace />
+  return children
+}
 
 function App() {
   return (
@@ -23,7 +29,14 @@ function App() {
               <Route path="/products" element={<ProductList />} />
               <Route path="/products/:id" element={<ProductDetail />} />
               <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route
+                path="/admin/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </main>
           <Footer />

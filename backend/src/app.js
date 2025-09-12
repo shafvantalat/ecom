@@ -22,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/products', require('./routes/productRoutes'));
+app.use('/api/auth', require('./routes/authRoutes'));
 
 // Test routes (for development without database)
 app.get('/api/test/products', require('./controllers/testController').getTestProducts);

@@ -15,6 +15,7 @@ const {
 } = require('../controllers/testController');
 
 const router = express.Router();
+const auth = require('../middleware/auth');
 
 // Validation middleware
 const productValidation = [
@@ -52,10 +53,10 @@ router.get('/', getProducts);
 router.get('/categories', getCategories);
 router.get('/:id', getProduct);
 
-// Admin routes (TODO: Add authentication middleware)
-router.post('/', productValidation, createProduct);
-router.put('/:id', productValidation, updateProduct);
-router.delete('/:id', deleteProduct);
+// Admin routes (Protected)
+router.post('/', auth, productValidation, createProduct);
+router.put('/:id', auth, productValidation, updateProduct);
+router.delete('/:id', auth, deleteProduct);
 
 module.exports = router;
 

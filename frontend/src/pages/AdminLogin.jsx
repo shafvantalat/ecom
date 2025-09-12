@@ -11,8 +11,6 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')    
   const navigate = useNavigate()
-  const dotenv = require('dotenv');
-  dotenv.config();
 
   const handleChange = (e) => {
     setFormData({
@@ -26,18 +24,19 @@ const AdminLogin = () => {
     setLoading(true)
     setError('')
 
-    const adminEmail = process.env.ADMIN_EMAIL
-    const adminPassword = process.env.ADMIN_PASSWORD
-
     try {
-      if (formData.email === adminEmail && formData.password === adminPassword) {
-        localStorage.setItem('adminToken', 'fake-jwt-token')
-        navigate('/admin/dashboard')
-      } else {
-        setError('Invalid email or password')
-      }
+      const res = await fetch((import.meta.env.VITE_API_URL || '/api') + '/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.message || 'Login failed')
+
+      localStorage.setItem('adminToken', data.token)
+      navigate('/admin/dashboard')
     } catch (error) {
-      setError('Login failed. Please try again.')
+      setError(error.message || 'Login failed. Please try again.')
     } finally {
       setLoading(false)
     }
