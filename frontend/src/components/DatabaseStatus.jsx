@@ -56,7 +56,7 @@ const DatabaseStatus = () => {
     if (status.connected && status.type === 'mongodb') {
       return {
         icon: <Database className="w-4 h-4" />,
-        text: 'Connected to MongoDB Atlas',
+        text: 'Connected to Server',
         bgColor: 'bg-green-100',
         textColor: 'text-green-800',
         borderColor: 'border-green-200'
