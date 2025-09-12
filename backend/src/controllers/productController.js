@@ -130,7 +130,16 @@ const createProduct = async (req, res) => {
       });
     }
 
-    const product = new Product(req.body);
+    // normalize arrays if comma-separated strings were sent
+    const body = { ...req.body }
+    if (typeof body.colors === 'string') {
+      body.colors = body.colors.split(',').map(c => c.trim()).filter(Boolean)
+    }
+    if (typeof body.sizes === 'string') {
+      body.sizes = body.sizes.split(',').map(s => s.trim()).filter(Boolean)
+    }
+
+    const product = new Product(body);
     await product.save();
 
     res.status(201).json({

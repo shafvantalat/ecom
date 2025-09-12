@@ -27,6 +27,10 @@ const productValidation = [
     .trim()
     .isLength({ min: 1, max: 1000 })
     .withMessage('Description must be between 1 and 1000 characters'),
+  body('sku')
+    .trim()
+    .isLength({ min: 1, max: 50 })
+    .withMessage('SKU is required and must be <= 50 chars'),
   body('price')
     .isNumeric()
     .isFloat({ min: 0 })

@@ -26,6 +26,7 @@ const AdminDashboard = () => {
   const [showAddForm, setShowAddForm] = useState(false)
   const [editingProduct, setEditingProduct] = useState(null)
   const [formData, setFormData] = useState({
+    sku: '',
     name: '',
     description: '',
     price: '',
@@ -100,6 +101,7 @@ const AdminDashboard = () => {
       
       // Reset form
       setFormData({
+        sku: '',
         name: '',
         description: '',
         price: '',
@@ -123,6 +125,7 @@ const AdminDashboard = () => {
   const handleEdit = (product) => {
     setEditingProduct(product)
     setFormData({
+      sku: product.sku || '',
       name: product.name,
       description: product.description,
       price: product.price,
@@ -373,6 +376,20 @@ const AdminDashboard = () => {
                 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Product ID (SKU)
+                      </label>
+                      <input
+                        type="text"
+                        name="sku"
+                        value={formData.sku}
+                        onChange={handleFormChange}
+                        className="input w-full"
+                        placeholder="Enter unique ID"
+                        required
+                      />
+                    </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
                         Product Name

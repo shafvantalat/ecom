@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
+  sku: {
+    type: String,
+    required: [true, 'Product ID (SKU) is required'],
+    trim: true,
+    unique: true,
+    maxlength: [50, 'SKU cannot exceed 50 characters']
+  },
   name: {
     type: String,
     required: [true, 'Product name is required'],
