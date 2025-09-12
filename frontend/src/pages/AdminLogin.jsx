@@ -9,8 +9,10 @@ const AdminLogin = () => {
   })
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState('')    
   const navigate = useNavigate()
+  const dotenv = require('dotenv');
+  dotenv.config();
 
   const handleChange = (e) => {
     setFormData({
@@ -24,8 +26,11 @@ const AdminLogin = () => {
     setLoading(true)
     setError('')
 
+    const adminEmail = process.env.ADMIN_EMAIL
+    const adminPassword = process.env.ADMIN_PASSWORD
+
     try {
-      if (formData.email === 'nixon@vizzie.in' && formData.password === 'vizzie') {
+      if (formData.email === adminEmail && formData.password === adminPassword) {
         localStorage.setItem('adminToken', 'fake-jwt-token')
         navigate('/admin/dashboard')
       } else {
