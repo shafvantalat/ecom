@@ -11,7 +11,7 @@ if (!fs.existsSync(envPath)) {
     console.log('✅ Created .env file from .env.example');
   } else {
     const envContent = `MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/ecommerce
-WHATSAPP_PHONE=+1234567890
+WHATSAPP_PHONE=+919746078283
 JWT_SECRET=your-jwt-secret-here
 PORT=5000
 NODE_ENV=development
