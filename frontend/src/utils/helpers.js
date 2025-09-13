@@ -117,7 +117,7 @@ export const colorOptions = [
 
 // Size options
 export const sizeOptions = {
-  clothes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  clothes: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL', '7XL', '8XL', '9XL', '10XL'],
   shoes: ['6', '7', '8', '9', '10', '11', '12'],
   accessories: ['One Size'],
   electronics: ['One Size'],

@@ -473,30 +473,97 @@ const AdminDashboard = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Colors (comma-separated)
+                      Colors
                     </label>
-                    <input
-                      type="text"
-                      name="colors"
-                      value={formData.colors.join(', ')}
-                      onChange={(e) => setFormData(prev => ({ ...prev, colors: e.target.value.split(',').map(c => c.trim()).filter(c => c) }))}
-                      className="input w-full"
-                      placeholder="e.g., red, blue, green"
-                    />
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-h-40 overflow-y-auto border border-gray-300 rounded-lg p-3">
+                      {[
+                        'Black', 'White', 'Navy', 'Gray', 'Charcoal',
+                        'Red', 'Crimson', 'Burgundy', 'Maroon', 'Deep Plum',
+                        'Blue', 'Royal Blue', 'Sky Blue', 'Teal', 'Turquoise',
+                        'Green', 'Forest Green', 'Emerald', 'Mint', 'Sage',
+                        'Purple', 'Lavender', 'Violet', 'Magenta', 'Fuchsia',
+                        'Pink', 'Rose', 'Coral', 'Salmon', 'Blush',
+                        'Yellow', 'Gold', 'Mustard', 'Cream', 'Ivory',
+                        'Orange', 'Peach', 'Apricot', 'Tangerine', 'Rust',
+                        'Brown', 'Tan', 'Beige', 'Camel', 'Khaki',
+                        'Silver', 'Metallic', 'Shimmer', 'Glitter', 'Holographic'
+                      ].map(color => (
+                        <label key={color} className="flex items-center text-sm">
+                          <input
+                            type="checkbox"
+                            checked={formData.colors.includes(color)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setFormData(prev => ({ ...prev, colors: [...prev.colors, color] }))
+                              } else {
+                                setFormData(prev => ({ ...prev, colors: prev.colors.filter(c => c !== color) }))
+                              }
+                            }}
+                            className="rounded border-gray-300 text-primary-600 focus:ring-primary-500 mr-2"
+                          />
+                          <span className="text-gray-700">{color}</span>
+                        </label>
+                      ))}
+                    </div>
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        placeholder="Or add custom colors (comma-separated)"
+                        className="input w-full text-sm"
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault()
+                            const customColors = e.target.value.split(',').map(c => c.trim()).filter(c => c)
+                            setFormData(prev => ({ ...prev, colors: [...prev.colors, ...customColors] }))
+                            e.target.value = ''
+                          }
+                        }}
+                      />
+                    </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Sizes (comma-separated)
+                      Sizes
                     </label>
-                    <input
-                      type="text"
-                      name="sizes"
-                      value={formData.sizes.join(', ')}
-                      onChange={(e) => setFormData(prev => ({ ...prev, sizes: e.target.value.split(',').map(s => s.trim()).filter(s => s) }))}
-                      className="input w-full"
-                      placeholder="e.g., S, M, L, XL"
-                    />
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 max-h-32 overflow-y-auto border border-gray-300 rounded-lg p-3">
+                      {[
+                        'XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL', '7XL', '8XL', '9XL', '10XL',
+                        '0', '2', '4', '6', '8', '10', '12', '14', '16', '18', '20', '22', '24', '26', '28', '30',
+                        '32', '34', '36', '38', '40', '42', '44', '46', '48', '50', '52', '54', '56', '58', '60'
+                      ].map(size => (
+                        <label key={size} className="flex items-center text-sm">
+                          <input
+                            type="checkbox"
+                            checked={formData.sizes.includes(size)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setFormData(prev => ({ ...prev, sizes: [...prev.sizes, size] }))
+                              } else {
+                                setFormData(prev => ({ ...prev, sizes: prev.sizes.filter(s => s !== size) }))
+                              }
+                            }}
+                            className="rounded border-gray-300 text-primary-600 focus:ring-primary-500 mr-2"
+                          />
+                          <span className="text-gray-700">{size}</span>
+                        </label>
+                      ))}
+                    </div>
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        placeholder="Or add custom sizes (comma-separated)"
+                        className="input w-full text-sm"
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault()
+                            const customSizes = e.target.value.split(',').map(s => s.trim()).filter(s => s)
+                            setFormData(prev => ({ ...prev, sizes: [...prev.sizes, ...customSizes] }))
+                            e.target.value = ''
+                          }
+                        }}
+                      />
+                    </div>
                   </div>
 
                   <div>

@@ -111,7 +111,7 @@ const ProductDetail = () => {
   }
 
   const availability = getAvailabilityStatus(product)
-  const availableSizes = sizeOptions[product.category] || []
+  const availableSizes = product.sizes || []
 
   return (
     <div className="min-h-screen bg-gray-50">
