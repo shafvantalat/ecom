@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { X } from 'lucide-react'
 import { formatPrice, getAvailabilityStatus, getCategoryIcon } from '../utils/helpers'
 
 const ProductCard = ({ product }) => {
+  const [showImageModal, setShowImageModal] = useState(false)
   const availability = getAvailabilityStatus(product)
   const categoryIcon = getCategoryIcon(product.category)
 
@@ -13,8 +16,13 @@ const ProductCard = ({ product }) => {
           <img
             src={product.images[0] || '/placeholder-image.jpg'}
             alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
             loading="lazy"
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              setShowImageModal(true)
+            }}
           />
           
           {/* Category Badge */}
@@ -111,6 +119,38 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
       </Link>
+
+      {/* Full Screen Image Modal */}
+      {showImageModal && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+          onClick={() => setShowImageModal(false)}
+        >
+          <div className="relative max-w-4xl max-h-full w-full h-full flex items-center justify-center">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowImageModal(false)}
+              className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            
+            {/* Image */}
+            <img
+              src={product.images[0] || '/placeholder-image.jpg'}
+              alt={product.name}
+              className="max-w-full max-h-full object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+            
+            {/* Product Info Overlay */}
+            <div className="absolute bottom-4 left-4 right-4 bg-black/50 text-white p-4 rounded-lg">
+              <h3 className="text-lg font-semibold mb-1">{product.name}</h3>
+              <p className="text-sm opacity-90">{formatPrice(product.price)}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

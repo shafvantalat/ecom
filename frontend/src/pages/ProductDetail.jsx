@@ -15,7 +15,7 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
 
-  const WHATSAPP_PHONE = '+919746078283' // This should come from environment variables
+  const WHATSAPP_PHONE = '+919633388966' // This should come from environment variables
 
   useEffect(() => {
     loadProduct()
