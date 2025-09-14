@@ -5,9 +5,9 @@ export const formatPrice = (price, currency = '₹') => {
 
 // Format WhatsApp message
 export const formatWhatsAppMessage = (product, selectedColor, selectedSize) => {
-  const { name, _id, price, availability } = product
+  const { name, sku, price, availability } = product
   
-  return `Hi, I'm interested in product: ${name} (ID: ${_id})
+  return `Hi, I'm interested in product: ${name} (ID: ${sku})
 Color: ${selectedColor || 'Not specified'}
 Size: ${selectedSize || 'Not specified'}
 Price: ${formatPrice(price)}
