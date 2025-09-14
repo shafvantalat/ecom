@@ -47,9 +47,9 @@ const DatabaseStatus = () => {
       return {
         icon: <AlertCircle className="w-4 h-4" />,
         text: 'Checking connection...',
-        bgColor: 'bg-yellow-100',
-        textColor: 'text-yellow-800',
-        borderColor: 'border-yellow-200'
+        bgColor: 'bg-yellow-100 dark:bg-yellow-900/20',
+        textColor: 'text-yellow-800 dark:text-yellow-400',
+        borderColor: 'border-yellow-200 dark:border-yellow-800'
       }
     }
 
@@ -57,9 +57,9 @@ const DatabaseStatus = () => {
       return {
         icon: <Database className="w-4 h-4" />,
         text: 'Connected to Server',
-        bgColor: 'bg-green-100',
-        textColor: 'text-green-800',
-        borderColor: 'border-green-200'
+        bgColor: 'bg-green-100 dark:bg-green-900/20',
+        textColor: 'text-green-800 dark:text-green-400',
+        borderColor: 'border-green-200 dark:border-green-800'
       }
     }
 
@@ -67,18 +67,18 @@ const DatabaseStatus = () => {
       return {
         icon: <Wifi className="w-4 h-4" />,
         text: 'Using Test Data (No Database)',
-        bgColor: 'bg-blue-100',
-        textColor: 'text-blue-800',
-        borderColor: 'border-blue-200'
+        bgColor: 'bg-blue-100 dark:bg-blue-900/20',
+        textColor: 'text-blue-800 dark:text-blue-400',
+        borderColor: 'border-blue-200 dark:border-blue-800'
       }
     }
 
     return {
-      icon: <WifiOn className="w-4 h-4" />,
+      icon: <WifiOff className="w-4 h-4" />,
       text: 'Database Connection Error',
-      bgColor: 'bg-red-100',
-      textColor: 'text-red-800',
-      borderColor: 'border-red-200'
+      bgColor: 'bg-red-100 dark:bg-red-900/20',
+      textColor: 'text-red-800 dark:text-red-400',
+      borderColor: 'border-red-200 dark:border-red-800'
     }
   }
 
@@ -93,7 +93,7 @@ const DatabaseStatus = () => {
             {config.text}
           </span>
           {status.type === 'test' && (
-            <span className="text-xs text-gray-600">
+            <span className="text-xs text-gray-600 dark:text-gray-400">
               (Admin features limited)
             </span>
           )}

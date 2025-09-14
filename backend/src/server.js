@@ -4,16 +4,12 @@ const dotenv = require('dotenv');
 
 // Load environment variables
 dotenv.config();
-
-const URI = process.env.MONGODB_URI;
-
 const PORT = process.env.PORT || 5002;
-const MONGODB_URI = URI;
 
 // Connect to database
 const connectDB = async () => {
   try {
-    await mongoose.connect(MONGODB_URI);
+    await mongoose.connect("mongodb+srv://shafvan2:talat@ecom.houahwt.mongodb.net/?retryWrites=true&w=majority&appName=ecom");
     console.log('✅ MongoDB Connected: ecom.houahwt.mongodb.net');
   } catch (error) {
     console.error('❌ Database connection error:', error.message);

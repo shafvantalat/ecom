@@ -44,24 +44,24 @@ const FilterBar = () => {
   )
 
   return (
-    <div className="bg-white border-b sticky top-16 z-40">
+    <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-16 z-40">
       <div className="container mx-auto px-4">
         {/* Mobile Filter Toggle */}
         <div className="md:hidden py-4">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center justify-between w-full px-4 py-3 bg-gray-50 rounded-lg border"
+            className="flex items-center justify-between w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600"
           >
             <div className="flex items-center space-x-2">
-              <Filter className="w-4 h-4" />
-              <span className="font-medium">Filters</span>
+              <Filter className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+              <span className="font-medium text-gray-900 dark:text-white">Filters</span>
               {hasActiveFilters && (
                 <span className="bg-primary-600 text-white text-xs px-2 py-1 rounded-full">
                   {Object.values(filters).filter(v => v !== '' && v !== 'newest').length}
                 </span>
               )}
             </div>
-            <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+            <ChevronDown className={`w-4 h-4 transition-transform text-gray-600 dark:text-gray-300 ${isOpen ? 'rotate-180' : ''}`} />
           </button>
         </div>
 
@@ -145,10 +145,10 @@ const FilterBar = () => {
 
         {/* Mobile Filter Panel */}
         {isOpen && (
-          <div className="md:hidden border-t bg-gray-50 p-4 space-y-4">
+          <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 p-4 space-y-4">
             {/* Search */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Search
               </label>
               <input
@@ -162,7 +162,7 @@ const FilterBar = () => {
 
             {/* Category */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Category
               </label>
               <select
@@ -181,7 +181,7 @@ const FilterBar = () => {
 
             {/* Color */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Color
               </label>
               <div className="flex flex-wrap gap-2">

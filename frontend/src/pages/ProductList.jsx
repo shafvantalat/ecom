@@ -127,13 +127,13 @@ const ProductList = () => {
     return (
       <div className="container mx-auto px-4 py-16">
         <div className="text-center">
-          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <span className="text-2xl">⚠️</span>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
             Something went wrong
           </h2>
-          <p className="text-gray-600 mb-4">{error}</p>
+          <p className="text-gray-600 dark:text-gray-300 mb-4">{error}</p>
           <button
             onClick={() => loadProducts(filters, pagination.current)}
             className="btn btn-primary"
@@ -146,34 +146,34 @@ const ProductList = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <FilterBar />
       
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
               Products
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-300">
               {pagination.total} products found
             </p>
           </div>
           
           {/* View Mode Toggle */}
           <div className="flex items-center space-x-2 mt-4 sm:mt-0">
-            <span className="text-sm text-gray-600">View:</span>
-            <div className="flex border border-gray-300 rounded-lg">
+            <span className="text-sm text-gray-600 dark:text-gray-300">View:</span>
+            <div className="flex border border-gray-300 dark:border-gray-600 rounded-lg">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 ${viewMode === 'grid' ? 'bg-primary-600 text-white' : 'text-gray-600'}`}
+                className={`p-2 ${viewMode === 'grid' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-300'}`}
               >
                 <Grid className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 ${viewMode === 'list' ? 'bg-primary-600 text-white' : 'text-gray-600'}`}
+                className={`p-2 ${viewMode === 'list' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-300'}`}
               >
                 <List className="w-4 h-4" />
               </button>
@@ -185,7 +185,7 @@ const ProductList = () => {
         {loading && (
           <div className="flex items-center justify-center py-16">
             <Loader className="w-8 h-8 animate-spin text-primary-600" />
-            <span className="ml-2 text-gray-600">Loading products...</span>
+            <span className="ml-2 text-gray-600 dark:text-gray-300">Loading products...</span>
           </div>
         )}
 
@@ -214,13 +214,13 @@ const ProductList = () => {
         {/* Empty State */}
         {!loading && products.length === 0 && (
           <div className="text-center py-16">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">🔍</span>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
               No products found
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Try adjusting your filters or search terms
             </p>
             <button
